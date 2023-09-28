@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './cityDropdown.css'; // Import the CSS file for component-specific styling
+import { Url } from '../../constant';
 
 function CityDropdown({ onSelectCity }) {
+    const navigate = useNavigate();
     const [cities, setCities] = useState([]);
 
     useEffect(() => {
         async function fetchCities() {
             try {
-                const response = await axios.get('http://localhost:8080/city');
+                const response = await axios.get(`${Url}/city`);
                 setCities(response.data);
             } catch (error) {
                 console.error('Error fetching cities:', error);
@@ -20,7 +23,9 @@ function CityDropdown({ onSelectCity }) {
 
     const handleCityChange = (event) => {
         const selectedCityId = event.target.value;
-        onSelectCity(selectedCityId);
+        const searchRoute=`/searchPage/?city=${selectedCityId}`;
+        navigate(searchRoute)
+        // onSelectCity(selectedCityId);
     };
 
     return (

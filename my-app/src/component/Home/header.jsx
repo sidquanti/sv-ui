@@ -24,6 +24,7 @@ import MultipleSelect from "../CityDropdown/citySelection";
 import BasicSelect from "../CityDropdown/citySelection";
 import CityDropdown from "../CityDropdown/cityDropdown";
 import { Link } from "react-router-dom";
+import { Url } from "../../constant";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -107,12 +108,16 @@ export default function PrimarySearchAppBar(props) {
         app: "app",
       };
       const response = await axios.post(
-        `http://localhost:8080/auth/signIn`,
+        `${Url}/auth/signIn`,
         bodyObj
       );
       Cookies.set("CIT", response?.data?.token ?? "", { expires: 2 });
       const userName = response?.data?.name ?? "";
+      const student = response?.data?.student ?? false;
+      const library = response?.data?.library ?? false;
       Cookies.set("userName", userName, { expires: 2 });
+      Cookies.set("student", student, { expires: 2 });
+      Cookies.set("library", library, { expires: 2 });
       setUserDetails(userName);
       setIsLoggedIn(true);
     } catch (error) {
@@ -141,9 +146,9 @@ export default function PrimarySearchAppBar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-<MenuItem component="a" href="/library">Enrollment</MenuItem>
-<MenuItem component="a" href="/library">Library</MenuItem>
-<MenuItem component="a" href="/library">Profile</MenuItem>
+{Cookies.get("student") === "true" && (<MenuItem component="a" href="/enrollment">My Enrollment</MenuItem>)}
+{Cookies.get("library") === "true" && (<MenuItem component="a" href="/library">My Library</MenuItem>)}
+<MenuItem component="a" href="/profile">Profile</MenuItem>
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
@@ -165,26 +170,6 @@ export default function PrimarySearchAppBar(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      {/* <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem> */}
-      {/* <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <>
           {!isLoggedIn ? (
@@ -219,7 +204,7 @@ export default function PrimarySearchAppBar(props) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             size="large"
@@ -233,9 +218,10 @@ export default function PrimarySearchAppBar(props) {
           <Typography
             variant="h6"
             noWrap
-            component="div"
+            component="a"
+            href="/"
             sx={{ display: { xs: "none", sm: "block" } }}
-          >
+            >
             Study Venue
           </Typography>
           <CityDropdown onSelectCity={onSelectCity} />

@@ -10,8 +10,18 @@ import Paper from '@mui/material/Paper';
 export default function AccessibleTable(props) {
   const {row,libraryList,setSelectedLibraryId}=props;
   console.log(libraryList)
+
+  const formatDate = (dateArray) => {
+    const date = new Date(dateArray[0], dateArray[1] - 1, dateArray[2]);
+    return date.toLocaleDateString();
+  };
+
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} 
+    style={{
+      margin: '0 auto', // Center the container horizontally
+      maxWidth: 'calc(100% - 60px)', // Leave 20px margin from both sides
+    }}>
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
         <TableHead>
           <TableRow>
@@ -21,8 +31,10 @@ export default function AccessibleTable(props) {
             <TableCell align="right">Mobile</TableCell>
             <TableCell align="right">Email</TableCell>
             {/* {/* <TableCell align="right">Fat&nbsp;(g)</TableCell> */}
-            <TableCell align="right">Enrollment Date</TableCell>
+            <TableCell align="right">Start Date</TableCell>
             <TableCell align="right">End Date</TableCell>
+            <TableCell align="right">Payment</TableCell>
+            <TableCell align="right">Action</TableCell>
             </>:
             <>
             <TableCell>Library</TableCell>
@@ -41,11 +53,12 @@ export default function AccessibleTable(props) {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-             
               <TableCell align="right">{row.mobile}</TableCell>
               <TableCell align="right">{row.email}</TableCell>
-              {/* <TableCell align="right">{row.startDate.toString()}</TableCell>
-               <TableCell align="right">{row.endDate.toString()}</TableCell> */}
+              <TableCell align="right">{formatDate(row.startDate)}</TableCell>
+               <TableCell align="right">{formatDate(row.endDate)}</TableCell>
+               <TableCell align="right">{row.status}</TableCell>
+               <TableCell align="right"><button>Paid</button><button>Print</button></TableCell>
             </TableRow>:
             <TableRow key={row.id} onClick={()=>setSelectedLibraryId(row.id)} component="a" href={`/library-enrollment/?id=${row.id}`}>
             <TableCell component="th" scope="row">

@@ -4,6 +4,7 @@ import { TextField } from '@mui/material';
 import axios from 'axios';
 import AccessibleTable from '../LibraryList/showEnrolment';
 import Cookies from 'js-cookie';
+import { Url } from '../../constant';
 
 function MoreServices() {
     const [searchQuery, setSearchQuery] = useState('8574120014');
@@ -16,7 +17,7 @@ function MoreServices() {
 
     const handleSearchSubmit = async() => {
             try {
-                const response = await axios.get(`http://localhost:8080/library/mobile/${searchQuery}`);
+                const response = await axios.get(`${Url}/library/mobile/${searchQuery}`);
                 console.log({response})
                 setLibraryList(response.data);
             } catch (error) {
@@ -31,7 +32,7 @@ const handleEnrolment= async(id)=>{
         }
       };
     try {
-        const response = await axios.get(`http://localhost:8080/enrollment?libraryId=${id}`,config);
+        const response = await axios.get(`${Url}/enrollment?libraryId=${id}`,config);
         console.log({response})
         setEnrolmentList(response.data);
     } catch (error) {

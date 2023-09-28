@@ -1,24 +1,26 @@
 import axios from "axios";
 import Home from "./component/Home/home";
-import MoreServices from "./component/MoreServices/moreServices";
-import logo from "./logo.svg";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import PrimarySearchAppBar from "./component/Home/header";
 import { useState } from "react";
 import Library from "./component/library/library";
 import EnrollmentLibrary from "./component/enrollment-library/enrolllment-library";
+import Profile from "./component/profile/profile";
+import Enrollment from "./component/enrollment/enrollment";
+import SearchPage from "./component/search-page/search-page";
+import LibraryList from "./component/LibraryList/libraryLists";
+import { Url } from "./constant";
+
 // import './App.css';
 
 function App() {
   const [selectedCityId, setSelectedCityId] = useState(null);
   const [userProfile, setUserProfile] = useState([]);
   const [userEnrollmentList, setUserEnrollmentList] = useState([]);
-  const [libraryEnrollmentList, setLibraryEnrollmentList] = useState([]);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedLibraryId,setSelectedLibraryId]=useState("");
- 
+  const [selectedLibraryId, setSelectedLibraryId] = useState("");
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -42,7 +44,7 @@ function App() {
     };
     try {
       const response = await axios.get(
-        `http://localhost:8080/enrollment/users`,
+        `${Url}/enrollment/users`,
         config
       );
       console.log({ response });
@@ -60,7 +62,7 @@ function App() {
     };
     try {
       const response = await axios.get(
-        `http://localhost:8080/user/profile`,
+        `${Url}/user/profile`,
         config
       );
       setUserProfile(response.data);
@@ -72,22 +74,8 @@ function App() {
   };
   return (
     <div className="app-container">
-      <PrimarySearchAppBar
-        handleMenuClose={handleMenuClose}
-        anchorEl={anchorEl}
-        setAnchorEl={setAnchorEl}
-        setMobileMoreAnchorEl={setMobileMoreAnchorEl}
-        handleMobileMenuClose={handleMobileMenuClose}
-        onSelectCity={handleSelectCity}
-        handleEnrollment={handleEnrollment}
-        handleProfile={handleProfile}
-        userProfile={userProfile}
-        userEnrollmentList={userEnrollmentList}
-        selectedCityId={selectedCityId}
-      />
       <Router>
-        <Routes>
-          <Route exact path="/" element={<Home
+        <PrimarySearchAppBar
           handleMenuClose={handleMenuClose}
           anchorEl={anchorEl}
           setAnchorEl={setAnchorEl}
@@ -99,13 +87,24 @@ function App() {
           userProfile={userProfile}
           userEnrollmentList={userEnrollmentList}
           selectedCityId={selectedCityId}
-          />}></Route>
-          <Route exact path="/more-services" element={<MoreServices />}></Route>
-          <Route exact path="/library" element={<Library setSelectedLibraryId={setSelectedLibraryId} />}></Route>
+          mobileMoreAnchorEl={mobileMoreAnchorEl}
+        />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route exact path="/enrollment" element={<Enrollment />}></Route>
+          <Route exact path="/profile" element={<Profile />}></Route>
+          <Route exact path="/searchPage" element={<LibraryList />}></Route>
+          <Route
+            exact
+            path="/library"
+            element={<Library setSelectedLibraryId={setSelectedLibraryId} />}
+          ></Route>
           <Route
             exact
             path="/library-enrollment"
-            element={<EnrollmentLibrary selectedLibraryId={selectedLibraryId} />}
+            element={
+              <EnrollmentLibrary selectedLibraryId={selectedLibraryId} />
+            }
           ></Route>
         </Routes>
       </Router>

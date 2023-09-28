@@ -1,0 +1,18 @@
+/* Profile.css */
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    text-align: left;
+}
+
+.profile-details table {
+    border-collapse: separate; /* Add this property to control the spacing */
+    border-spacing: 10px; /* Adjust the spacing as needed */
+    width: 100%;
+}
+
+.profile-details td {
+    padding: 10px; /* Adjust the padding as needed */
+}

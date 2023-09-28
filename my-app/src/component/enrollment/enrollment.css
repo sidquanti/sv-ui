@@ -1,0 +1,17 @@
+/* Style the enrollment container */
+.enrollment-container {
+  display: flex;
+  flex-direction: column; /* Display children in a column layout */
+  align-items: flex-start; /* Align children to the left */
+  margin: 0 auto; /* Center the container horizontally */
+  max-width: 800px; /* Adjust the maximum width as needed */
+  padding: 20px; /* Add padding as needed */
+  text-align: left;
+}
+
+.enrollment-table {
+  width: 80%; /* Adjust the width as needed */
+  border-collapse: collapse;
+  margin: 20px; /* Add margin for spacing */
+}
+

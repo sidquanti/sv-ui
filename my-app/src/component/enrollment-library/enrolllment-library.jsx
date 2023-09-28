@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import AccessibleTable from "../LibraryList/showEnrolment";
+import { Url } from "../../constant";
 
 const EnrollmentLibrary = (props) => {
   const { selectedLibraryId } = props;
@@ -25,7 +26,7 @@ console.log({selectedLibraryId})
         };
         try {
           const response = await axios.get(
-            `http://localhost:8080/enrollment?libraryId=${id}`,
+            `${Url}/enrollment?libraryId=${id}`,
             config
           );
           setLibraryEnrollmentList(response.data);
@@ -38,10 +39,17 @@ console.log({selectedLibraryId})
   }, [id]);
   return (
     <div>
-        <h1>List of Enrollments</h1>
+      {libraryEnrollmentList.length > 0 ? (
+        <h1>Students Enrolled In Library</h1>
+      ) : (
+        <h1>No Student is Enrolled in this library yet</h1>
+      )}
       {libraryEnrollmentList.length > 0 && (
         <AccessibleTable row={libraryEnrollmentList} />
       )}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px', marginRight: '30px' }}>
+        <button>Enroll New Student</button>
+        </div>
     </div>
   );
 };

@@ -9,7 +9,7 @@ import "./slide.css";
 function Slide() {
   const settings = {
     autoplay: true,
-    autoplaySpeed: 50000,
+    autoplaySpeed: 5000,
     className: "slide_box",
     dots: true,
     virtualList: true,

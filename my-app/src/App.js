@@ -11,6 +11,7 @@ import Enrollment from "./component/enrollment/enrollment";
 import SearchPage from "./component/search-page/search-page";
 import LibraryList from "./component/LibraryList/libraryLists";
 import { Url } from "./constant";
+import FooterContainer from "./component/Home/footerComponent";
 
 // import './App.css';
 
@@ -107,6 +108,7 @@ function App() {
             }
           ></Route>
         </Routes>
+        <FooterContainer/>
       </Router>
     </div>
   );

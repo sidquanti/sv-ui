@@ -4,15 +4,27 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import AccessibleTable from "../LibraryList/showEnrolment";
 import { Url } from "../../constant";
+import Button from '@mui/material/Button';
+import ModalDialog from "../modal-dialog/modal-dialog";
+
 
 const EnrollmentLibrary = (props) => {
   const { selectedLibraryId } = props;
 
 console.log({selectedLibraryId})
   const [libraryEnrollmentList, setLibraryEnrollmentList] = useState([]);
+  const [open, setOpen] = useState(false);
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const id = urlParams.get('id');
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     if (id) {
@@ -38,18 +50,23 @@ console.log({selectedLibraryId})
     }
   }, [id]);
   return (
-    <div>
-      {libraryEnrollmentList.length > 0 ? (
+    <div style={{overflow:'auto'}}>
+      {/* {libraryEnrollmentList.length > 0 ? (
         <h1>Students Enrolled In Library</h1>
       ) : (
         <h1>No Student is Enrolled in this library yet</h1>
-      )}
+      )} */}
+      <div style={{position:'static'}}>
+       <h1 style={{marginTop:'10vh',marginLeft:'25px'}}>Students Enrolled In Library</h1>
       {libraryEnrollmentList.length > 0 && (
         <AccessibleTable row={libraryEnrollmentList} />
       )}
+      </div>
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px', marginRight: '30px' }}>
-        <button>Enroll New Student</button>
+        <Button onClick={handleOpen} variant="contained" type="submit">Enroll New Student</Button>
         </div>
+      <ModalDialog open={open} handleClose={handleClose} id={id} setLibraryEnrollmentList={setLibraryEnrollmentList} />
+    
     </div>
   );
 };

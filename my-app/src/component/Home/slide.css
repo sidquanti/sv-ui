@@ -1,0 +1,12 @@
+.slide_img{
+    height:300px;
+    margin-top: 50px;
+    }
+    .slide_box{
+      padding-top: 20px;
+    }
+    .carousel-row{
+        width: 100%;
+    display: inline-block;
+    text-align: center;
+    }

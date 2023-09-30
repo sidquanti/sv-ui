@@ -12,8 +12,7 @@ export default function AccessibleTable(props) {
   console.log(libraryList)
 
   const formatDate = (dateArray) => {
-    const date = new Date(dateArray[0], dateArray[1] - 1, dateArray[2]);
-    return date.toLocaleDateString();
+    return "";
   };
 
   return (

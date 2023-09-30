@@ -51,13 +51,20 @@ console.log({selectedLibraryId})
   }, [id]);
   return (
     <div style={{overflow:'auto'}}>
+      <div style={{position:'static'}}>
+      <div style={{marginTop:'10vh',marginLeft:'25px'}} >
+       {libraryEnrollmentList.length > 0?
+       <h1>Students Enrolled In Library</h1>:
+      <h1 > No Student is Enrolled in this library yet</h1>
+       }
+       </div>
+
       {/* {libraryEnrollmentList.length > 0 ? (
         <h1>Students Enrolled In Library</h1>
       ) : (
-        <h1>No Student is Enrolled in this library yet</h1>
+        
       )} */}
-      <div style={{position:'static'}}>
-       <h1 style={{marginTop:'10vh',marginLeft:'25px'}}>Students Enrolled In Library</h1>
+      
       {libraryEnrollmentList.length > 0 && (
         <AccessibleTable row={libraryEnrollmentList} />
       )}

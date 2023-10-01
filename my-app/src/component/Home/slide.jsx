@@ -2,23 +2,22 @@ import React from "react";
 import Slider from "infinite-react-carousel";
 
 import cloud_mountains from "../../data/bi1.jpg";
-import groups from "../..//data/bi2.jpg";
+import groups from "../../data/bi2.jpg";
 import hills from "../../data/bi3.jpg";
 import "./slide.css";
 
 function Slide() {
   const settings = {
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 50000,
     className: "slide_box",
     dots: true,
     virtualList: true,
     duration: 20,
-    arrows:true,
-    
+    arrows:true
   };
   return (
-    <div>
+    <div >
       
       <Slider {...settings}>
         <div className="row">

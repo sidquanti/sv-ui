@@ -4,7 +4,7 @@ import "./libraryList.css";
 import { Url } from "../../constant";
 // import Modal from 'react-modal'; // Import the modal library
 
-function LibraryList({ selectedCityId }) {
+function LibraryList({ selectedCityId,setSelectedCityId }) {
   const [libraries, setLibraries] = useState([]);
   const [cityName, setCityName] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false); // State to manage the modal
@@ -13,13 +13,13 @@ function LibraryList({ selectedCityId }) {
   console.log(urlParams)
   const cityId = urlParams.get("city");
   console.log({cityId})
-
+  const selectCityId=selectedCityId||cityId;
   useEffect(() => {
-    if (cityId) {
+    if (selectCityId) {
       async function fetchLibraries() {
         try {
           const response = await axios.get(
-            `${Url}/library/city/${cityId}`
+            `${Url}/library/city/${selectCityId}`
           );
           setLibraries(response.data);
         } catch (error) {
@@ -29,7 +29,7 @@ function LibraryList({ selectedCityId }) {
 
       fetchLibraries();
     }
-  }, [cityId]);
+  }, [selectCityId]);
 
   const handleEnrollClick = () => {
     setModalIsOpen(true);

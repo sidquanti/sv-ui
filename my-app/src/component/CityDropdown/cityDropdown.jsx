@@ -4,7 +4,7 @@ import axios from 'axios';
 import './cityDropdown.css'; // Import the CSS file for component-specific styling
 import { Url } from '../../constant';
 
-function CityDropdown({ onSelectCity }) {
+function CityDropdown({ onSelectCity,setSelectedCityId }) {
     const navigate = useNavigate();
     const [cities, setCities] = useState([]);
 
@@ -24,6 +24,8 @@ function CityDropdown({ onSelectCity }) {
     const handleCityChange = (event) => {
         const selectedCityId = event.target.value;
         const searchRoute=`/searchPage/?city=${selectedCityId}`;
+        setSelectedCityId(selectedCityId)
+
         navigate(searchRoute)
         // onSelectCity(selectedCityId);
     };

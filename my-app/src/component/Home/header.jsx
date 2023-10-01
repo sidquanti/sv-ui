@@ -78,6 +78,7 @@ export default function PrimarySearchAppBar(props) {
     mobileMoreAnchorEl,
     handleMobileMenuClose,
     setMobileMoreAnchorEl,
+    setSelectedCityId,
   } = props;
 
   const isMenuOpen = Boolean(anchorEl);
@@ -224,7 +225,7 @@ export default function PrimarySearchAppBar(props) {
             >
             Study Venue
           </Typography>
-          <CityDropdown onSelectCity={onSelectCity} />
+          <CityDropdown onSelectCity={onSelectCity} setSelectedCityId={setSelectedCityId} />
           {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />

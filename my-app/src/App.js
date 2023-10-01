@@ -89,12 +89,13 @@ function App() {
           userEnrollmentList={userEnrollmentList}
           selectedCityId={selectedCityId}
           mobileMoreAnchorEl={mobileMoreAnchorEl}
+          setSelectedCityId={setSelectedCityId}
         />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route exact path="/enrollment" element={<Enrollment />}></Route>
           <Route exact path="/profile" element={<Profile />}></Route>
-          <Route exact path="/searchPage" element={<LibraryList />}></Route>
+          <Route exact path="/searchPage" element={<LibraryList  selectedCityId={selectedCityId} setSelectedCityId={setSelectedCityId}/>}></Route>
           <Route
             exact
             path="/library"

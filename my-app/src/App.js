@@ -12,6 +12,7 @@ import SearchPage from "./component/search-page/search-page";
 import LibraryList from "./component/LibraryList/libraryLists";
 import { Url } from "./constant";
 import FooterContainer from "./component/Home/footerComponent";
+import MyPrivacy from "./component/privacy";
 
 // import './App.css';
 
@@ -94,6 +95,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route exact path="/enrollment" element={<Enrollment />}></Route>
+          <Route exact path="/privacy" element={<MyPrivacy/>}></Route>
+          
           <Route exact path="/profile" element={<Profile />}></Route>
           <Route exact path="/searchPage" element={<LibraryList  selectedCityId={selectedCityId} setSelectedCityId={setSelectedCityId}/>}></Route>
           <Route

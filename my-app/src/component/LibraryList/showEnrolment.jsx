@@ -12,7 +12,15 @@ export default function AccessibleTable(props) {
   console.log(libraryList)
 
   const formatDate = (dateArray) => {
-    return "";
+    if (!dateArray || dateArray.length !== 6) {
+      // Ensure the input array has the expected length
+      return null;
+    }
+  
+    const [year, month, day] = dateArray;
+    const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+  
+    return formattedDate;
   };
 
   return (

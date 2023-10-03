@@ -25,6 +25,9 @@ import BasicSelect from "../CityDropdown/citySelection";
 import CityDropdown from "../CityDropdown/cityDropdown";
 import { Link } from "react-router-dom";
 import { Url } from "../../constant";
+import "./home.css";
+
+import logo from "../../data/sv_logo.png";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -204,6 +207,7 @@ export default function PrimarySearchAppBar(props) {
   );
 
   return (
+    <div style={{backgroundColor:"red"}}>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar>
@@ -223,7 +227,7 @@ export default function PrimarySearchAppBar(props) {
             href="/"
             sx={{ display: { xs: "none", sm: "block" } }}
             >
-            Study Venue
+            <img src={logo} alt="Study Venue" style={{width:'180px',height:'50px', marginTop:'5px'}}></img>
           </Typography>
           <CityDropdown onSelectCity={onSelectCity} setSelectedCityId={setSelectedCityId} />
           {/* <Search>
@@ -282,5 +286,6 @@ export default function PrimarySearchAppBar(props) {
       {renderMobileMenu}
       {renderMenu}
     </Box>
+    </div>
   );
 }

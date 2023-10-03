@@ -25,6 +25,25 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+// Convert "YYYY-MM-DD" date string to the array format
+function formatDateToArray(dateString) {
+  const date = new Date(dateString);
+
+  if (isNaN(date.getTime())) {
+    // Handle invalid date string here
+    return null;
+  }
+
+  return [
+    date.getFullYear(),
+    date.getMonth() + 1, // Adding 1 to month because it's zero-based
+    date.getDate(),
+    23, // Hours
+    59, // Minutes
+    59, // Seconds
+  ];
+}
+
 const Form = (props) => {
 
   const {handleClose=()=>{},id="",setLibraryEnrollmentList=[],isLibrary=false,setUserLibraryList=()=>{}}=props;
@@ -34,6 +53,8 @@ const Form = (props) => {
   const [studentEmail, setStudentEmail] = useState("");
   const [studentMobile, setStudentMobile] = useState("");
   const [libraryAddress, setLibraryAddress] = useState("");
+  const [enrollmentStart, setEnrollmentStart] = useState("");
+  const [enrollmentEnd, setEnrollmentEnd] = useState("");
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -50,6 +71,8 @@ const Form = (props) => {
             "name" : studentName,
             "mobile" : studentMobile,
             "email" : studentEmail,
+            "startDate" : formatDateToArray(enrollmentStart),
+            "endDate" : formatDateToArray(enrollmentEnd)
         }
     const resp=await axios.post(`${Url}/enrollment`,data,config);
     try{
@@ -115,6 +138,20 @@ else{
         value={studentMobile}
         onChange={(e) => setStudentMobile(e.target.value)}
       />
+      {!isLibrary&&<TextField
+        label="Start Date (YYYY-MM-DD)"
+        variant="filled"
+        required
+        value={enrollmentStart}
+        onChange={(e) => setEnrollmentStart(e.target.value)}
+      />}
+      {!isLibrary&&<TextField
+        label="End Date (YYYY-MM-DD)"
+        variant="filled"
+        required
+        value={enrollmentEnd}
+        onChange={(e) => setEnrollmentEnd(e.target.value)}
+      />}
       <div>
         <Button variant="contained" onClick={handleClose}>
           Cancel

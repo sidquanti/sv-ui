@@ -9,11 +9,11 @@ import "./slide.css";
 function Slide() {
   const settings = {
     autoplay: true,
-    autoplaySpeed: 50000,
+    autoplaySpeed: 4000,
     className: "slide_box",
     dots: true,
     virtualList: true,
-    duration: 20,
+    duration: 100,
     arrows:true
   };
   return (

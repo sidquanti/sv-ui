@@ -11,6 +11,9 @@
   display: inline-block;
   text-align: center;
 }
+.carousel-item{
+  width: 100% !important;
+}
 
 /* Features Section */
 

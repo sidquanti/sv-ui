@@ -59,11 +59,16 @@ console.log({selectedLibraryId})
        }
        </div>
 
-      {/* {libraryEnrollmentList.length > 0 ? (
-        <h1>Students Enrolled In Library</h1>
-      ) : (
-        
-      )} */}
+       {/* Search Input Field */}
+       <div>
+          <input
+            type="text"
+            placeholder="Search by Name"
+            //value={searchQuery}
+            //onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button>Search</button>
+        </div>
       
       {libraryEnrollmentList.length > 0 && (
         <AccessibleTable row={libraryEnrollmentList} />

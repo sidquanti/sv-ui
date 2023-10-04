@@ -30,7 +30,7 @@ export default function AccessibleTable(props) {
       maxWidth: 'calc(100% - 60px)', // Leave 20px margin from both sides
     }}>
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
-        <TableHead>
+        <TableHead style={{ backgroundColor: '#369bc9'}}>
           <TableRow>
           {!libraryList?
           <>

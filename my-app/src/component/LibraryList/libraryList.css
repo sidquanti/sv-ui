@@ -1,0 +1,65 @@
+/* libraryList.css */
+
+/* Style the container */
+.library-list-container {
+    padding: 20px;
+    margin-top: 50px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px #369bc9;
+  }
+  
+  /* Style the header */
+  .library-list-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Style the table */
+  .library-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style the table header */
+  .library-table th {
+    background-color: #369bc9;
+    color: white;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  /* Style the table rows */
+  .library-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Style the "enroll" button */
+  .enroll-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .enroll-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style the "Enroll" button text */
+  .enroll-button-text {
+    margin-left: 5px;
+  }
+  
+  /* Add more styles as needed */
+  

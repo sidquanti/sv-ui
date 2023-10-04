@@ -106,7 +106,6 @@ else{
 }
     handleClose();
   };
-
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       <TextField
@@ -139,15 +138,17 @@ else{
         onChange={(e) => setStudentMobile(e.target.value)}
       />
       {!isLibrary&&<TextField
-        label="Start Date (YYYY-MM-DD)"
+        label="Start Date"
         variant="filled"
+        type="Date"
         required
         value={enrollmentStart}
         onChange={(e) => setEnrollmentStart(e.target.value)}
       />}
       {!isLibrary&&<TextField
-        label="End Date (YYYY-MM-DD)"
+        label="End Date "
         variant="filled"
+        type="Date"
         required
         value={enrollmentEnd}
         onChange={(e) => setEnrollmentEnd(e.target.value)}

@@ -1,6 +1,7 @@
 .slide_img{
   height:300px;
   margin-top: 50px;
+  width: 79%;
 }
 .slide_box{
   padding-top: 20px;
@@ -56,8 +57,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  width: 80%;
   margin: 0 auto;
-  padding: 0 20px;
   color: #2E2E2E;
 }

@@ -22,9 +22,7 @@ export default function FooterContainer() {
                 </Footer.Column>
                 <Footer.Column>
                 <Footer.Title>Contact Us</Footer.Title>
-                    <Footer.Link href="#">United States</Footer.Link>
-                    <Footer.Link href="#">United Kingdom</Footer.Link>
-                    <Footer.Link href="#">Australia</Footer.Link>
+                    <Footer.Link href="#">India</Footer.Link>
                     <Footer.Link href="#">Support</Footer.Link>
                 </Footer.Column>
                 <Footer.Column>
